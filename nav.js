@@ -6,12 +6,16 @@
 
     function setOpen(open) {
         header.classList.toggle("header--open", open);
+        nav.classList.toggle("is-open", open);
         toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        toggle.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
         document.body.classList.toggle("nav-open", open);
     }
 
-    toggle.addEventListener("click", function () {
-        setOpen(!header.classList.contains("header--open"));
+    toggle.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        setOpen(!nav.classList.contains("is-open"));
     });
 
     nav.querySelectorAll(".nav-link").forEach(function (link) {

@@ -12,8 +12,13 @@
 <body>
 
     <header class="header">
-        <h1 class="main-title">LAURIE & LUCAS</h1>
-        <nav class="navbar" aria-label="Navigation principale">
+        <div class="header-bar">
+            <h1 class="main-title">LAURIE & LUCAS</h1>
+            <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <nav class="navbar" id="mainNav" aria-label="Navigation principale">
             <a href="index.html" class="nav-link">BIENVENUE</a>
             <a href="histoire.html" class="nav-link active">NOTRE HISTOIRE</a>
             <a href="celebration.html" class="nav-link">CÉLÉBRATION</a>
@@ -124,6 +129,7 @@
         });
     </script>
 
+    <script src="nav.js"></script>
     <script src="splash.js"></script>
 </body>
 </html>

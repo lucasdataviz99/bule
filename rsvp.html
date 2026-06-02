@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laurie & Lucas — RSVP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="main-title">LAURIE & LUCAS</h1>
+        <nav class="navbar" aria-label="Navigation principale">
+            <a href="index.html" class="nav-link">BIENVENUE</a>
+            <a href="histoire.html" class="nav-link">NOTRE HISTOIRE</a>
+            <a href="celebration.html" class="nav-link">CÉLÉBRATION</a>
+            <a href="lieu.html" class="nav-link">LE LIEU</a>
+            <a href="dresscode.html" class="nav-link">DRESS CODE</a>
+            <a href="liste-mariage.html" class="nav-link">LISTE DE MARIAGE</a>
+            <a href="rsvp.html" class="nav-link active">RSVP</a>
+        </nav>
+    </header>
+
+    <main class="rsvp-main">
+        <h2 class="script-day">RSVP</h2>
+
+        <p class="italic-text rsvp-intro">We'd love to know if you're coming.</p>
+        <p class="italic-text rsvp-deadline">Please submit your RSVP by May 1st 2026.</p>
+
+        <button id="openModal" class="btn-discover" type="button">RSVP</button>
+
+        <div class="rsvp-illustration">
+            <img src="photos/table.png" alt="Table de mariage">
+        </div>
+    </main>
+
+    <div id="rsvpModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <button class="close" type="button" aria-label="Fermer">&times;</button>
+            <h2 id="modalTitle">Confirmation</h2>
+            <p id="rsvpFormStatus" class="rsvp-form-status" role="status" hidden></p>
+            <form id="rsvpForm" action="https://formsubmit.co/laurie.lucas.bule@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="Nouveau RSVP — Mariage Laurie & Lucas">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" id="rsvpNext" value="">
+                <input type="text" name="_honey" class="rsvp-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+                <input type="text" name="nom" placeholder="Prénom et Nom" required>
+                <input type="text" name="regime" placeholder="Contraintes alimentaires">
+                <select name="plus_un">
+                    <option value="non">Pas de +1</option>
+                    <option value="oui">Demande de +1</option>
+                </select>
+                <textarea name="message" placeholder="Commentaires" rows="4"></textarea>
+                <button type="submit" class="btn-discover" id="rsvpSubmitBtn">Envoyer</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p class="footer-names">Laurie & Lucas</p>
+        <p class="footer-date">3 Octobre 2026 · Ganshoren</p>
+    </footer>
+
+    <script>
+        const modal = document.getElementById("rsvpModal");
+        const btn = document.getElementById("openModal");
+        const closeBtn = document.querySelector(".close");
+        const form = document.getElementById("rsvpForm");
+        const statusEl = document.getElementById("rsvpFormStatus");
+        const submitBtn = document.getElementById("rsvpSubmitBtn");
+
+        function openModal() {
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        function setStatus(message, type) {
+            statusEl.hidden = !message;
+            statusEl.textContent = message;
+            statusEl.className = "rsvp-form-status rsvp-form-status--" + (type || "");
+        }
+
+        btn.onclick = openModal;
+        closeBtn.onclick = closeModal;
+        window.onclick = (event) => { if (event.target === modal) closeModal(); };
+
+        var nextInput = document.getElementById("rsvpNext");
+        if (nextInput && location.protocol !== "file:") {
+            nextInput.value = location.origin + location.pathname + "?sent=1";
+        }
+
+        if (new URLSearchParams(location.search).get("sent") === "1") {
+            openModal();
+            setStatus("Merci ! Votre RSVP a bien été envoyé.", "success");
+        }
+
+        form.addEventListener("submit", function (event) {
+            if (location.protocol === "file:") {
+                event.preventDefault();
+                setStatus("Ouvrez le site via un serveur local (Live Server, etc.), pas en double-cliquant le fichier HTML.", "error");
+                return;
+            }
+
+            setStatus("Envoi en cours…", "");
+            submitBtn.disabled = true;
+        });
+    </script>
+
+    <script src="splash.js"></script>
+</body>
+</html>

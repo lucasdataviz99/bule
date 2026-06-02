@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laurie & Lucas — Le Lieu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="main-title">LAURIE & LUCAS</h1>
+        <nav class="navbar" aria-label="Navigation principale">
+            <a href="index.html" class="nav-link">BIENVENUE</a>
+            <a href="histoire.html" class="nav-link">NOTRE HISTOIRE</a>
+            <a href="celebration.html" class="nav-link">CÉLÉBRATION</a>
+            <a href="lieu.html" class="nav-link active">LE LIEU</a>
+            <a href="dresscode.html" class="nav-link">DRESS CODE</a>
+            <a href="liste-mariage.html" class="nav-link">LISTE DE MARIAGE</a>
+            <a href="rsvp.html" class="nav-link">RSVP</a>
+        </nav>
+    </header>
+
+    <main class="location-container">
+
+        <div class="location-map-wrapper">
+            <img src="photos/chateau.png" alt="Plan illustré du Château de Rivieren" class="location-map">
+            <div id="venue-map" class="venue-map" aria-label="Carte interactive — Château de Rivieren"></div>
+        </div>
+
+        <div class="location-text-wrapper">
+            <p class="location-paragraph">
+                Niché au cœur d'un écrin de verdure préservé à Ganshoren, le Château de Rivieren est un domaine historique dont les origines remontent au Moyen Âge, là où le temps semble s'être arrêté.
+            </p>
+            <p class="location-paragraph">
+                Entouré de ses douves d'eau vive et d'un parc majestueux, ce havre de paix a immédiatement fait chavirer nos cœurs. Au-delà de ses grilles se cachent des jardins intemporels, des salons empreints d'histoire et des espaces sereins parfaits pour se rassembler.
+            </p>
+            <p class="location-paragraph">
+                À seulement quelques minutes du centre de Bruxelles, nous l'avons choisi comme le cadre idéal pour célébrer notre amour et écrire ce nouveau chapitre avec vous.
+            </p>
+
+            <a href="https://www.google.com/maps/search/?api=1&query=Château+de+Rivieren,+Drève+du+Château+66,+1083+Ganshoren" target="_blank" rel="noopener noreferrer" class="btn-location-more">Ouvrir dans Google Maps</a>
+        </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <p class="footer-names">Laurie & Lucas</p>
+        <p class="footer-date">3 Octobre 2026 · Ganshoren</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        (function () {
+            var coords = [50.87667, 4.31111];
+            var mapEl = document.getElementById("venue-map");
+            if (!mapEl || typeof L === "undefined") return;
+
+            var map = L.map(mapEl, {
+                center: coords,
+                zoom: 15,
+                zoomControl: false,
+                scrollWheelZoom: false,
+                attributionControl: true
+            });
+
+            L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+                attribution: "&copy; OpenStreetMap &copy; CARTO",
+                subdomains: "abcd",
+                maxZoom: 19
+            }).addTo(map);
+
+            var marker = L.divIcon({
+                className: "venue-marker-wrap",
+                html: "<span class=\"venue-marker\"></span>",
+                iconSize: [16, 16],
+                iconAnchor: [8, 8]
+            });
+
+            L.marker(coords, { icon: marker, interactive: false }).addTo(map);
+
+            map.on("click", function () {
+                map.scrollWheelZoom.enable();
+            });
+            map.on("mouseout", function () {
+                map.scrollWheelZoom.disable();
+            });
+        })();
+    </script>
+
+    <script src="splash.js"></script>
+</body>
+</html>

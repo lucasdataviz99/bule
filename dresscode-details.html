@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laurie & Lucas — Inspiration Dress Code</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="main-title">LAURIE & LUCAS</h1>
+        <nav class="navbar" aria-label="Navigation principale">
+            <a href="index.html" class="nav-link">BIENVENUE</a>
+            <a href="histoire.html" class="nav-link">NOTRE HISTOIRE</a>
+            <a href="celebration.html" class="nav-link">CÉLÉBRATION</a>
+            <a href="lieu.html" class="nav-link">LE LIEU</a>
+            <a href="dresscode.html" class="nav-link active">DRESS CODE</a>
+            <a href="liste-mariage.html" class="nav-link">LISTE DE MARIAGE</a>
+            <a href="rsvp.html" class="nav-link">RSVP</a>
+        </nav>
+    </header>
+
+    <section class="pinterest-section">
+        <h2 class="script-day" id="title-placeholder">Inspiration</h2>
+
+        <a data-pin-do="embedBoard"
+           data-pin-board-width="900"
+           data-pin-scale-height="400"
+           data-pin-scale-width="200"
+           href="https://www.pinterest.com/ton_compte/ton_tableau/">
+        </a>
+
+        <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+    </section>
+
+    <footer class="site-footer">
+        <p class="footer-names">Laurie & Lucas</p>
+        <p class="footer-date">3 Octobre 2026 · Ganshoren</p>
+    </footer>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const type = params.get("type");
+        const title = document.getElementById("title-placeholder");
+        if (type === "ladies") title.textContent = "Inspiration — Ladies";
+        else if (type === "gentlemen") title.textContent = "Inspiration — Gentlemen";
+    </script>
+
+    <script src="splash.js"></script>
+</body>
+</html>

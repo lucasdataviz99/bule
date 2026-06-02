@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laurie & Lucas — Notre Histoire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="main-title">LAURIE & LUCAS</h1>
+        <nav class="navbar" aria-label="Navigation principale">
+            <a href="index.html" class="nav-link">BIENVENUE</a>
+            <a href="histoire.html" class="nav-link active">NOTRE HISTOIRE</a>
+            <a href="celebration.html" class="nav-link">CÉLÉBRATION</a>
+            <a href="lieu.html" class="nav-link">LE LIEU</a>
+            <a href="dresscode.html" class="nav-link">DRESS CODE</a>
+            <a href="liste-mariage.html" class="nav-link">LISTE DE MARIAGE</a>
+            <a href="rsvp.html" class="nav-link">RSVP</a>
+        </nav>
+    </header>
+
+    <section class="story-section">
+        <h2 class="script-day">Notre histoire</h2>
+
+        <div class="story-text">
+            <p>On s'est rencontrés en secondaire. À ce moment-là, rien de fou, juste deux ados qui se tournent autour. Après deux tentatives ratées pour commencer une histoire, c'est finalement la nuit du 3 au 4 septembre que nos amis nous ont poussés, parce qu'à ce moment-là, c'était évident pour tout le monde… sauf pour nous.</p>
+
+            <p>Depuis, ça fait 10 ans ! 10 ans qui ont l'impression de quelques mois.</p>
+
+            <p>Pendant ce temps, on a grandi, voyagé, emménagé ensemble, déménagé plusieurs fois, été diplômés du secondaire puis chacun d'un master, commencé à travailler, vécu des moments forts mais aussi des moments plus simples, mais toujours à deux.</p>
+
+            <p>Le 3 octobre 2023, Lucas a fait sa demande. Un moment parfait, juste à deux.</p>
+
+            <p>Le 18 octobre 2025, notre fille est arrivée (oui oui, notre fille) : Judy. Aujourd'hui, elle a toute sa place dans notre histoire.</p>
+
+            <p>Et puis le 3 octobre… un mélange de hasard et d'évidence, nous nous dirons oui pour la vie.</p>
+        </div>
+    </section>
+
+    <div class="photo-mosaic" aria-label="Galerie photos"></div>
+
+    <footer class="site-footer">
+        <p class="footer-names">Laurie & Lucas</p>
+        <p class="footer-date">3 Octobre 2026 · Ganshoren</p>
+    </footer>
+
+    <script>
+        const MONTHS = [
+            "janvier", "février", "mars", "avril", "mai", "juin",
+            "juillet", "août", "septembre", "octobre", "novembre", "décembre"
+        ];
+
+        const photos = [
+            { file: "1.jpeg",  date: "2023-10-03" },
+            { file: "2.jpeg",  date: "2023-10-06" },
+            { file: "3.jpeg",  date: "2016" },
+            { file: "4.jpeg",  date: "2024-07-01" },
+            { file: "5.jpeg",  date: "2024-09-12" },
+            { file: "6.jpeg",  date: "2024-12-22" },
+            { file: "7.jpeg",  date: "2025-07-02" },
+            { file: "8.jpeg",  date: "2025-09-06" },
+            { file: "9.jpeg",  date: "2016" },
+            { file: "10.jpeg", date: "2026-04-26" },
+            { file: "11.jpeg", date: "2016" },
+            { file: "12.jpeg", date: "2017" },
+            { file: "13.jpeg", date: "2017" },
+            { file: "14.jpeg", date: "2017" },
+            { file: "15.jpeg", date: "2017" },
+            { file: "16.jpeg", date: "2018" },
+            { file: "17.jpeg", date: "2018" },
+            { file: "18.jpeg", date: "2018" },
+            { file: "19.jpeg", date: "2018" },
+            { file: "20.jpeg", date: "2018" },
+            { file: "21.jpeg", date: "2018" },
+            { file: "22.jpeg", date: "2018" },
+            { file: "23.webp", date: "2018" },
+            { file: "24.jpeg", date: "2019-09-03" },
+            { file: "25.jpeg", date: "2019-09-03" },
+            { file: "26.jpeg", date: "2019-12-21" },
+            { file: "27.jpeg", date: "2020-07-09" },
+            { file: "28.jpeg", date: "2020-09-04" },
+            { file: "29.jpeg", date: "2021-07-09" },
+            { file: "30.jpeg", date: "2021-08-02" },
+            { file: "31.jpeg", date: "2022-04-06" },
+            { file: "32.jpeg", date: "2022-04-06" },
+            { file: "33.jpeg", date: "2022-07-03" },
+            { file: "34.jpeg", date: "2022-07-08" },
+            { file: "35.jpeg", date: "2022-10-12" },
+            { file: "36.jpeg", date: "2022-10-18" },
+            { file: "37.jpeg", date: "2022-10-30" }
+        ];
+
+        function formatDate(dateStr) {
+            if (/^\d{4}$/.test(dateStr)) return dateStr;
+            const [year, month, day] = dateStr.split("-");
+            return parseInt(day, 10) + " " + MONTHS[parseInt(month, 10) - 1] + " " + year;
+        }
+
+        const mosaic = document.querySelector(".photo-mosaic");
+
+        photos.forEach(function (photo, index) {
+            const label = formatDate(photo.date);
+            const cell = document.createElement("figure");
+            cell.className = "mosaic-cell";
+            cell.tabIndex = 0;
+
+            const img = document.createElement("img");
+            img.src = "photos/histoire/" + photo.file;
+            img.alt = "Laurie et Lucas — " + label;
+            img.loading = index > 8 ? "lazy" : "eager";
+
+            const caption = document.createElement("figcaption");
+            caption.className = "mosaic-date";
+            caption.textContent = label;
+
+            cell.appendChild(img);
+            cell.appendChild(caption);
+            mosaic.appendChild(cell);
+        });
+    </script>
+
+    <script src="splash.js"></script>
+</body>
+</html>

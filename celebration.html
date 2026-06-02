@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laurie & Lucas — Célébration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="main-title">LAURIE & LUCAS</h1>
+        <nav class="navbar" aria-label="Navigation principale">
+            <a href="index.html" class="nav-link">BIENVENUE</a>
+            <a href="histoire.html" class="nav-link">NOTRE HISTOIRE</a>
+            <a href="celebration.html" class="nav-link active">CÉLÉBRATION</a>
+            <a href="lieu.html" class="nav-link">LE LIEU</a>
+            <a href="dresscode.html" class="nav-link">DRESS CODE</a>
+            <a href="liste-mariage.html" class="nav-link">LISTE DE MARIAGE</a>
+            <a href="rsvp.html" class="nav-link">RSVP</a>
+        </nav>
+    </header>
+
+    <div class="disco-ball-wrap" aria-hidden="true">
+        <img src="photos/disco.png" alt="" class="disco-ball">
+    </div>
+
+    <main class="celebration-hero">
+        <div class="hero-image-container">
+            <img src="image_b1fd85.jpg" alt="Table festive" class="hero-bg-img">
+            <div class="celebration-overlay-text">Prêts à faire la fête ?</div>
+        </div>
+    </main>
+
+    <section class="timeline-container">
+
+        <div class="side-icons left-side" aria-hidden="true">
+            <img src="photos/appareil.png" alt="" class="floating-icon icon-l1">
+            <img src="photos/cocktail.avif" alt="" class="floating-icon icon-l2">
+            <img src="photos/coeur.avif" alt="" class="floating-icon icon-l3">
+            <img src="photos/cupidon.avif" alt="" class="floating-icon icon-l4">
+            <img src="photos/bougies.avif" alt="" class="floating-icon icon-l5">
+            <img src="photos/champagne.avif" alt="" class="floating-icon icon-l6">
+        </div>
+
+        <div class="side-icons right-side" aria-hidden="true">
+            <img src="icon_coeur_unique.png" alt="" class="floating-icon icon-r1">
+            <img src="icon_olive.png" alt="" class="floating-icon icon-r2">
+            <img src="icon_verre.png" alt="" class="floating-icon icon-r3">
+            <img src="icon_brochette.png" alt="" class="floating-icon icon-r4">
+            <img src="icon_champagne.png" alt="" class="floating-icon icon-r5">
+            <img src="icon_chat.png" alt="" class="floating-icon icon-r6">
+            <img src="icon_petits_coeurs.png" alt="" class="floating-icon icon-r7">
+        </div>
+
+        <div class="timeline-content">
+
+            <h2 class="script-day">Samedi 3 Octobre</h2>
+
+            <div class="event-block">
+                <h3 class="event-title">Une matinée douce à la découverte de Bruxelles</h3>
+                <p class="event-desc">
+                    Dans la matinée et pendant le déjeuner, vous aurez quartier libre pour vous promener et découvrir la magnifique architecture ainsi que les parcs de la capitale.<br>
+                    Voici un petit guide des endroits que nous affectionnons particulièrement.
+                </p>
+                <a href="#" class="btn-discover">Découvrir</a>
+            </div>
+
+            <div class="event-block">
+                <h3 class="event-title">La célébration</h3>
+                <p class="event-desc">
+                    Nous nous dirons « Oui » à 16h00 précises,<br>
+                    dans la cour poétique du Château de Rivieren.
+                </p>
+                <p class="event-desc italic-note">Nous vous invitons chaleureusement à arriver pour 15h30.</p>
+            </div>
+
+            <div class="event-block">
+                <h3 class="event-title">Le cocktail</h3>
+                <p class="event-desc">
+                    Un cocktail à la lueur dorée du canicule suivra,<br>
+                    pour trinquer ensemble et lancer officiellement les festivités.
+                </p>
+            </div>
+
+            <div class="event-block">
+                <h3 class="event-title">La fête</h3>
+                <p class="event-desc">
+                    Le dîner sera servi à 19h00,<br>
+                    suivi d'une soirée dansante mémorable sous les étoiles de Ganshoren.
+                </p>
+            </div>
+
+            <h2 class="script-day space-top">Dimanche 4 Octobre</h2>
+
+            <div class="event-block">
+                <h3 class="event-title">Le brunch</h3>
+                <p class="event-desc">
+                    La fête n'est pas tout à fait finie !<br>
+                    Nous serons comblés de vous retrouver de nouveau au<br>
+                    Château de Rivieren à partir de 12h00<br>
+                    pour un authentique brunch de lendemain placé sous le signe de la détente.
+                </p>
+            </div>
+
+            <p class="kids-notice">
+                *Nous adorons vos bouts de chou, mais nous avons choisi de faire de notre mariage un événement exclusivement réservé aux adultes. Ainsi, tout le monde (et particulièrement les mamans et les papas) pourra se détendre et profiter pleinement de chaque instant.*
+            </p>
+
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <p class="footer-names">Laurie & Lucas</p>
+        <p class="footer-date">3 Octobre 2026 · Ganshoren</p>
+    </footer>
+
+    <script>
+        (function () {
+            var wrap = document.querySelector(".disco-ball-wrap");
+            var header = document.querySelector(".header");
+            var ball = document.querySelector(".disco-ball");
+            if (!wrap || !header || !ball) return;
+    
+            var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            var scrollStart = 60;
+            var scrollRange = 420;
+    
+            function measureHeader() {
+                wrap.style.top = header.offsetHeight + "px";
+            }
+    
+            function updateDisco() {
+                var progress = Math.min(Math.max((window.scrollY - scrollStart) / scrollRange, 0), 1);
+                wrap.style.opacity = progress;
+    
+                if (reducedMotion) {
+                    ball.style.transform = progress > 0.2 ? "translateY(0)" : "translateY(-100%)";
+                    return;
+                }
+    
+                // 'drop' contrôle la descente verticale
+                var drop = progress * 100; 
+                
+                // 'sway' contrôle le balancement horizontal
+                // J'ai réduit le multiplicateur à 3 pour une subtilité maximale
+                // J'ai réduit la fréquence (0.01 au lieu de 0.02) pour un balancement plus lent et naturel
+                var sway = Math.sin(window.scrollY * 0.01) * 3 * progress;
+                
+                ball.style.transform =
+                    "translateY(calc(-100% + " + drop + "%)) translateX(" + sway + "px)";
+            }
+    
+            measureHeader();
+            updateDisco();
+            window.addEventListener("resize", measureHeader);
+            window.addEventListener("scroll", updateDisco, { passive: true });
+        })();
+    </script>
+
+    <script src="splash.js"></script>
+</body>
+</html>
